@@ -9,7 +9,7 @@ def prob_calc(s,w,wp):
     return c
 
 def sim(n,w,s,g,cr,wp):
-    p,d,c=s,{},''
+    p,d=s,{}
     for _ in range(n):
         s,f=p,0
         for i in range(w):
