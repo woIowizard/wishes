@@ -43,7 +43,7 @@ def home():
         elif w:
             c += '<br><b>one-5* analytic probability: </b>%s%%<br><br>'%round(prob_calc(p,w,wp)[-1]*100,4)
             try:
-                n=int(n);cr=int(cr);assert n and cr in range(0,4);d,e=sim(n,w,p,g,cr,wp)
+                n=int(n);cr=int(cr);assert n and cr in range(4);d,e=sim(n,w,p,g,cr,wp)
                 c += flask.render_template('sim_res.html',n=n,w=w,p=p,wp=wp,cr=cr,g=g,d=d,e=e)
             except: pass
         else: c += flask.render_template('pr_list.html',p=p,ps=prob_calc(p,w,wp))
