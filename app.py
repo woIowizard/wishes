@@ -1,5 +1,7 @@
 import flask,random
 app = flask.Flask(__name__)
+fs=lambda s,n,g:1 if not s else 0 if not n else fs(s-1,n-1,0) if g else 0.5*(fs(s-1,n-1,0)+fs(s,n-1,1))
+
 fs=lambda s,n,g,cr,wp:1 if not s else 0 if not n else fs(s-1,n-1,0,cr,wp) if g else 0.375*fs(s-1,n-1,0,0,wp)+0.625*fs(s,n-1,1,0,wp) if wp else 0.5*(fs(s-1,n-1,0,max(0,cr-1),wp)+max(0,cr-1)*0.5*fs(s-1,n-1,0,1,wp)+(1-max(0,cr-1)*0.5)*fs(s,n-1,1,cr+1,wp))
 pp=lambda p,wp:(0.007 if wp else 0.006) if p<(62 if wp else 74) else min(1,(p-(62 if wp else 73))*(.0584117647 if wp else .0584705882)+(.007 if wp else 0.006))
 
@@ -48,7 +50,4 @@ def home():
             except: pass
         else: c += flask.render_template('pr_list.html',p=p,ps=prob_calc(p,w,wp))
         return c
-    return 'something went wrong' 
-
-if __name__ == '__main__':
-    app.run()
+    return 'something went wrong'
