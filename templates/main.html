@@ -1,0 +1,52 @@
+<!doctype html>
+<html><body leftmargin="50" topmargin="25">
+<h1>wishes</h1>
+<table style="width:100%"><tr><td>
+<form action="/" method="POST"><table style="width:100%;border-spacing:10px">
+<tr>
+	<td>pity: <input type='text' value='{{ p }}' size='3' name='pity'/></td>
+	<td>wishes: <input type='text' value='{{ w }}' size='3' name='wishes'/></td>
+	<td><input type='checkbox'{% if wp==1 %} checked{% endif %} name='weapon'/> weapon</td>
+</tr>
+<tr>
+	<td colspan="3">simulation rounds: <input type='text' value='{{ n }}' size='6' name='rounds'/></td>
+</tr>
+<tr>
+	<td ><input type='checkbox'{% if g==1 %} checked{% endif %} name='guarantee'> guarantee</td>
+	<td colspan="2">CR counter: <input type='text' value='{{ cr }}' size='3' name='cr'/></td>
+</tr>
+<tr>
+	<td colspan="3"><input type='checkbox'{% if v==1 %} checked{% endif %} name='fivestar'/> only compute target 5* probabilities for <input type='text' value='{{ t }}' size='3' name='stars'/> 5*s</td>
+</tr>
+<tr>
+	<td><input type='submit' value='go'/></td>
+</tr>
+</table></form>
+</td>
+<td>
+<u>usage</u><br>
+<b>basic use:</b> tell me your pity and number of wishes, i calculate the probability of your next 5* and run a simulation<br><br>
+to get 5* probs for all numbers of wishes, set wishes=0<br><br>
+<u>assumptions</u><br>
+<table>
+<tr>
+	<td><b>5* char probs:</b></td>
+	<td>0.6% at pity<74, +6% for each pity after 73</td>
+</tr>
+<tr>
+	<td><b>target char probs:</b></td>
+	<td>50% on non-guaranteed 5*; CR prob=0% for CR<2, 50% for CR=2, 100% otherwise</td>
+</tr>
+<tr>
+	<td><b>5* weapon probs:</b></td>
+	<td>0.7% at pity<63, +7% for each pity after 62</td>
+</tr>
+<tr>
+	<td><b>target weapon probs:</b></td>
+	<td>37.5% on non-guaranteed 5*; no CR</td>
+</tr>
+</table>
+<td>
+</tr></table>
+<br>
+</body></html>

@@ -1,0 +1,46 @@
+<u>{{ n }}-round simulation of {{ w }} wishes from {{ p }} pity</u><br><br>
+<table>
+<tr>
+	<td>guarantee:</td>
+	<td>{{ g }}</td>
+</tr>
+{% if not wp %}
+<tr>
+	<td>CR counter:</td>
+	<td>{{ cr }}</td>
+</tr>
+{% endif %}
+<tr>
+	<td>banner:</td>
+	<td>{% if wp %}weapon{% else %}char{% endif %}</td>
+</tr>
+</table><br>
+<table style="width:60%"><tr>
+<td><table style="width:60%">
+<tr>
+	<td><b>5*s</b></td>
+	<td><b>rounds</b></td>
+	<td><b>prob</b></td>
+	<td><b>ave no. of pulls</b></td>
+</tr>
+{% for i in d %}
+<tr>
+	<td>{{ i }}</td>
+	<td>{{ d[i]|length }}</td>
+	<td>{{ ((d[i]|length)/n*100)|round(4) }}%</td>
+	<td>{{ ((d[i]|sum)/(d[i]|length))|round(2) }}</td>
+</tr>
+{% endfor %}
+</table></td><td><table style="width:60%">
+<tr>
+	<td><b>target 5*</b></td>
+	<td><b>prob</b></td>
+</tr>
+{% for i in d %}
+<tr>
+	<td>{{ i }}</td>
+	<td>{{ (e[i-1]*100)|round(4) }}%</td>
+</tr>
+{% endfor %}
+</table></td>
+</tr></table>
