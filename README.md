@@ -5,7 +5,8 @@ A wish calculator for Genshin. Main functions:<br>
 * analytic calculations of probabilities for target 5*s
 * wishing simulations 
 * all the above accounts for capturing radience and weapon banners
-<br>To run on the command-line, use wish.py--usage described below. The calculator has also been implemented as a [flask app](https://ricardoshillyshally.pythonanywhere.com/), with source code in app.py.
+
+To run on the command-line, use wish.py--usage described below. The calculator has also been implemented as a [flask app](https://ricardoshillyshally.pythonanywhere.com/), with source code in app.py.
 
 
 ### assumptions
