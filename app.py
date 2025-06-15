@@ -30,14 +30,14 @@ def home():
     elif r.method == 'POST':
         p,w,n,g,v,t,wp,cr = r.form['pity'],r.form['wishes'],r.form['rounds'],'guarantee' in r.form,'fivestar' in r.form,r.form['stars'],'weapon' in r.form,r.form['cr']
         c = flask.render_template('main.html',p=p,w=w,n=n,g=g,v=v,t=t,wp=wp,cr=cr)
-        try: p=int(p);assert p in range(0,76 if wp else 90)
+        try: p=int(p);assert p in range(76 if wp else 90)
         except: return c+'pity must be between 0 and %s for %s'%(76 if wp else 90,'weapon' if wp else 'char')
         try: w=int(w);assert w>=0
         except: return c+'wishes must be non-negative'
         if v:
             try: t=int(t);assert t>0
             except: return c+'number of 5*s must be positive'
-            try: cr=int(cr);assert cr in range(0,4)
+            try: cr=int(cr);assert cr in range(4)
             except: return c+'CR must be between 0 and 3'
             c += flask.render_template('fs_sim.html',t=t,g=g,wp=wp,cr=cr,f=[fs(i,t,g,cr,wp) for i in range(t+1)])
         elif w:
