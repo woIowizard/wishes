@@ -9,18 +9,18 @@ p.add_argument('-c',help='CR counter',type=int,default=1)
 p.add_argument('-f',help='five-star probs',type=int,default=0)
 args = p.parse_args()
 
-wp,g,cr,t,w,p,n=args.e,args.g,args.c,args.f,args.w,args.p,args.n;z=76 if wp else 90
+wp,g,cr,t,w,p,n=args.e,args.g,args.c,args.f,args.w,args.p,args.n;z=80 if wp else 90
 try:assert p in range(z)
 except: print('pity must be between 0 and %s for %s'%(z,'weapon' if wp else 'char'));quit()
 try:assert w>=0
 except: print('wishes must be non-negative');quit()
 
 fs=lambda s,n,g,cr,wp:1 if not s else 0 if not n else fs(s-1,n-1,0,cr,wp) if g else 0.375*fs(s-1,n-1,0,0,wp)+0.625*fs(s,n-1,1,0,wp) if wp else 0.5*(fs(s-1,n-1,0,max(0,cr-1),wp)+max(0,cr-1)*0.5*fs(s-1,n-1,0,1,wp)+(1-max(0,cr-1)*0.5)*fs(s,n-1,1,cr+1,wp))
-pp=lambda p,wp:(0.007 if wp else 0.006) if p<(62 if wp else 74) else min(1,(p-(62 if wp else 73))*(.07 if wp else .06)+(.007 if wp else 0.006))
+pp=lambda p,wp:(0.007 if wp else 0.006) if p<(62 if wp else 74) else min(1,(p-(62 if wp else 73))*(.0584117647 if wp else .0584705882)+(.007 if wp else 0.006))
 
 def prob_calc(s,w,wp):
     p,c=1,[0]
-    for i in range(min((76 if wp else 90)-s,w if w else 76 if wp else 90)):z=pp(i+s+1,wp);c[0]+=p*z*(i+1);p*=1-z;c.append(1-p)
+    for i in range(min(z-s,w if w else z)):y=pp(i+s+1,wp);c[0]+=p*y*(i+1);p*=1-y;c.append(1-p)
     return c
 
 def sim(n,w,s,g,cr,wp):
