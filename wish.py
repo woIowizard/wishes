@@ -15,8 +15,8 @@ except: print('pity must be between 0 and %s for %s'%(z,'weapon' if wp else 'cha
 try:assert w>=0
 except: print('wishes must be non-negative');quit()
 
-fs=lambda s,n,g,cr,wp:1 if not s else 0 if not n else fs(s-1,n-1,0,cr,wp) if g else 0.375*fs(s-1,n-1,0,0,wp)+0.625*fs(s,n-1,1,0,wp) if wp else 0.5*(fs(s-1,n-1,0,max(0,cr-1),wp)+max(0,cr-1)*0.5*fs(s-1,n-1,0,1,wp)+(1-max(0,cr-1)*0.5)*fs(s,n-1,1,cr+1,wp))
-pp=lambda p,wp:(0.007 if wp else 0.006) if p<(62 if wp else 74) else min(1,(p-(62 if wp else 73))*(.0584117647 if wp else .0584705882)+(.007 if wp else 0.006))
+fs=lambda s,n,g,cr,wp:1 if not s else 0 if not n else fs(s-1,n-1,0,cr,wp) if g else .375*fs(s-1,n-1,0,0,wp)+.625*fs(s,n-1,1,0,wp) if wp else .5*(fs(s-1,n-1,0,max(0,cr-1),wp)+max(0,cr-1)*0.5*fs(s-1,n-1,0,1,wp)+(1-max(0,cr-1)*0.5)*fs(s,n-1,1,cr+1,wp))
+pp=lambda p,wp:(.007 if wp else .006) if p<(62 if wp else 74) else min(1,(p-(62 if wp else 73))*(.0551666667 if wp else .0584705882)+(.007 if wp else .006))
 
 def prob_calc(s,w,wp):
     p,c=1,[0]
