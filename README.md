@@ -9,12 +9,19 @@ To run on the command-line, use wish.py--usage described below. The calculator h
 
 
 ### assumptions
-1. *5* character probabilities*. 0.6% at pity<74, +5.85% for each pity after 73. [reference](https://genshin-impact.fandom.com/f/p/4400000000000308779).
-2. *target char probabilities*. 50% on non-guaranteed 5*; CR prob=0% for CR<2, 50% for CR=2, 100% otherwise. [reference](https://www.reddit.com/r/Genshin_Impact/comments/1f3ykny/capturing_radiance_details_observations_and/)
-3. *5* weapon probabilities*. 0.7% at pity<63, +7% for each pity after 62. [reference](https://library.keqingmains.com/general-mechanics/gacha#featured-weapon-banner)
-4. *target weapon probabilities*. 37.5% on non-guaranteed 5*; no CR. [reference](https://genshin-impact.fandom.com/wiki/Wish)
+1. **5\* character probabilities**. 0.6% at pity<74, +5.84705882% for each pity after 73. [reference](https://genshin-impact.fandom.com/f/p/4400000000000308779).
+2. **target char probabilities**. 50% on non-guaranteed 5*; CR prob=0% for CR<2, 50% for CR=2, 100% otherwise. [reference](https://www.reddit.com/r/Genshin_Impact/comments/1f3ykny/capturing_radiance_details_observations_and/)
+3. **5\* weapon probabilities**. 0.7% at pity<63, +5.84117647% for each pity after 62. [reference](https://library.keqingmains.com/general-mechanics/gacha#featured-weapon-banner)
+4. **target weapon probabilities**. 37.5% on non-guaranteed 5*; no CR. [reference](https://genshin-impact.fandom.com/wiki/Wish)
 
 
-###
+### usage
+Run `wish.py -h` to see options.
 
-analytic probabilities of target 5* in 10 5*
+![help](img/help.png)
+
+Pass the value of a number of wishes to `-w`. The script calculates the analytic probability of the next 5* from 0 pity and runs a 100000 round simulation. Set the pity value with `-p` and the number of simulation rounds with `-n`. 
+
+Example: To calculate the probability of one 5* in 25 pulls from 20 pity, run `wish.py -w 25 -p 20`.
+
+![analytic](img/analytic.png)
