@@ -20,8 +20,16 @@ Run `wish.py -h` to see options.
 
 ![help](img/help.png)
 
-Pass the value of a number of wishes to `-w`. The script calculates the analytic probability of the next 5* from 0 pity and runs a 100000 round simulation. Set the pity value with `-p` and the number of simulation rounds with `-n`. 
+Pass the value of a number of wishes to `-w`. With default values, the script calculates the analytic probability of the next 5\* character from 0 pity and runs a 100000 round simulation, assuming no guarantee and a CR counter of 1. The number of 5\*s in the simulation is reported, and analytic values are used to estimate the number of target 5\*s. Use the options to overwrite defaults.
 
-Example: To calculate the probability of one 5* in 25 pulls from 20 pity, run `wish.py -w 25 -p 20`.
+Example: To calculate the analytic probability of one 5* in 25 pulls from 20 pity, run `wish.py -w 25 -p 20`.
 
 ![analytic](img/analytic.png)
+
+Example: To run a 200000 round simulation of 300 pulls from 30 pity on the weapon banner, run `wish.py -w 300 -p 30 -e -n 200000`.
+
+![sim](img/sim.png)
+
+To calculate analytic probabilities of target 5\*s from a given number of 5\*s, use the `-f` option. Example: To calculate the probabilities for 10 5*s on the char banner with CR counter 2 and guarantee, run `wish.py -f 10 -g -c 2`
+
+![fs](img/fs.png)
