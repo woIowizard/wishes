@@ -41,7 +41,7 @@ def home():
             except: return c+'CR must be between 0 and 3'
             c += flask.render_template('fs_sim.html',t=t,g=g,wp=wp,cr=cr,f=[fs(i,t,g,cr,wp) for i in range(t+1)])
         elif w:
-            c += '<br><b>one-5* analytic probability: </b>%s%%<br><br>'%prob_calc(p,w,wp)[-1]
+            c += '<br><b>one-5* analytic probability: </b>%s%%<br><br>'%round(prob_calc(p,w,wp)[-1]*100,4)
             try:
                 n=int(n);cr=int(cr);assert n and cr in range(0,4);d,e=sim(n,w,p,g,cr,wp)
                 c += flask.render_template('sim_res.html',n=n,w=w,p=p,wp=wp,cr=cr,g=g,d=d,e=e)
